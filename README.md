@@ -20,8 +20,8 @@ other Ubuntu versions will likely work).
 
 We need to add a reverse proxy to the site, but *only* for our production
 site.  When the code is deployed on a development or test site, the reverse
-proxy should be disabled.  The location /meow on the production site should
-proxy requests to http://placekitten.com .
+proxy should be disabled.  The location /meow/ on the production site should
+proxy requests to http://placekitten.com/ .
 
 ## Usage instructions:
 
