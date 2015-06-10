@@ -1,0 +1,21 @@
+- apt: update_cache=yes
+
+- name: Install nginx
+  apt: pkg={{item}} state=installed
+  with_items:
+   - nginx
+
+- name: Disable default nginx config
+  file: dest=/etc/nginx/sites-enabled/default state=absent
+  register: nginx_default_config
+
+- name: Install/update nginx config for catsite
+  copy: src=nginx-catsite dest=/etc/nginx/sites-enabled/catsite
+  register: nginx_catsite_config
+
+- name: Reload nginx configuration
+  shell: service nginx reload
+  when: nginx_default_config.changed or nginx_catsite_config.changed
+
+- name: Install/update catsite
+  copy: src=catsite dest=/var/www/
