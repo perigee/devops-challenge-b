@@ -1,16 +1,16 @@
 # devops-challenge
-A small coding challenge for our open devops position
+A small coding challenge for our open devops position.  This is intended to be completed independently, without consulting other developers or any Plotly employees.  Consulting online references is fine!  If you're really unsure about something, make an assumption and state it when you submit the pull request.
 
 ## Basic steps to complete this challenge:
 
 1. Fork this repo.
 2. Create and test your solution.
 3. Update this README to explain how to deploy to various environments with
-   this solution, how you've tested it, and what further testing you feel
+   this solution.
+4. Open a pull request on our repo.  Explain how you've tested it, and what further testing you feel
    would be needed before putting this into production.  (We realize you may
    not have the servers set up to test this as much as you'd like in a
    reasonable amount of time.)
-4. Open a pull request on our repo.
 
 ## Requirements:
 
