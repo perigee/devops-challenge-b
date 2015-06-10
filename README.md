@@ -26,6 +26,7 @@ proxy requests to http://placekitten.com .
 ## Usage instructions:
 
 To deploy to a machine, run:
+
 ```ansible-playbook playbook.yml -i "HOST," --extra-vars="user=USER"```
 
 Replace HOST by the hostname or IP address, and USER by the username (must have
