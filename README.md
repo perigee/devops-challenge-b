@@ -13,6 +13,17 @@ A small coding challenge for our open devops position.  This is intended to be c
    reasonable amount of time.)
 
 
+### Design principles 
+
+1. For the suck of simplicity, I only adopt a "naive" approach to finish this project without fancy `group_vars` etc., and also did concern the different linux distributions. 
+2. Use production/staging as key words to distinguish the production environment from dev/testing environment. 
+3. Inside nginx role, 
+   - add `vars/production.yml` file to override the parameters settings for staging
+   - nginx.conf.j2: use condiction clause to seperate the production/staging configuration
+   - in tasks, use `production` key word to add specific operations for production environment
+
+
+
 ### Current test strategies
 
 1. create dummy localhost for syntax checking
@@ -21,11 +32,14 @@ A small coding challenge for our open devops position.  This is intended to be c
    $ ansible-playbook --syntax-check --list-tasks -i tests/ansible_hosts playbook.yml
    ```
 
-2. Add service testng inside playbook # see playbook.yml
+2. Add service testng inside playbook (see inside playbook.yml)
 
 
 ### Further test strategies (Not yet implemented)
 
+1. Run system testing on staging hosts
+2. Add variables under role nginx for centos/redhat deployment
+3. Build security testing for production hosts
 
 
 
@@ -45,7 +59,7 @@ proxy requests to http://placekitten.com/ .
 
 ### Define your hosts information
 
-Put your production hosts under the `[production]` section, and your staging hosts uder the `[staging]` section. 
+In the `hosts` inventory file, put your production hosts under the `[production]` section, and your staging hosts uder the `[staging]` section. 
 
 
 ### Run the deployment procedure
