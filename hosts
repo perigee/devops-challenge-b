@@ -1,0 +1,10 @@
+[staging]
+104.167.117.203		ansible_connection=ssh		ansible_ssh_user=user
+
+[production]
+104.167.117.204		ansible_connection=ssh		ansible_ssh_user=user
+
+
+[web:children]
+staging
+production
