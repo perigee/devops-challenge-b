@@ -1,0 +1,47 @@
+- apt: update_cache=yes
+
+- name: Install nginx
+  apt: pkg={{item}} state=installed
+  with_items:
+   - nginx
+
+
+- name: create config directories
+  file: "path=/etc/nginx/{{ item }} state=directory owner=root group=root  mode=0755"
+  with_items:
+    - sites-available
+    - sites-enabled
+
+- name: create www directory
+  file: "path={{ nginx_www_dir }} state=directory owner={{ nginx_user }} group={{ nginx_group }} mode=0755"
+
+
+- include_vars: production.yml
+  when: " 'production' in {{ group_names }}"
+
+- name: check the reverse path
+  debug: msg={{ nginx_reverse_proxy_path }}
+  when: " 'production' in {{ group_names }}"
+
+- name: write nginx.conf
+  template: "src=nginx.conf.j2 dest=/etc/nginx/nginx.conf owner=root group=root mode=0644"
+  notify:
+    - restart nginx
+
+- name: Disable default nginx config
+  file: dest=/etc/nginx/sites-enabled/default state=absent
+  register: nginx_default_config
+
+- name: Install/update nginx config for catsite
+  copy: src=nginx-catsite dest=/etc/nginx/sites-enabled/catsite
+  register: nginx_catsite_config
+
+#- name: Reload nginx configuration
+#  shell: service nginx reload
+#  when: nginx_default_config.changed or nginx_catsite_config.changed
+
+
+- name: Install/update catsite
+  copy: src=catsite dest=/var/www/
+
+
