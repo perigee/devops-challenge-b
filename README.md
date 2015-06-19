@@ -15,10 +15,10 @@ A small coding challenge for our open devops position.  This is intended to be c
 
 ### Design principles 
 
-1. For the suck of simplicity, I only adopt a "naive" approach to finish this project without fancy `group_vars` etc., and also did concern the different linux distributions. 
-1. In order to minimize the duplication inside role under the scalability concern, use template file to combine the settings for different production/staging settings (probably immature) 
-2. Use production/staging as key words to distinguish the production environment from dev/testing environment. 
-3. Inside nginx role, 
+1. For the sack of simplicity, I only adopt a "naive" approach to finish this project without fancy `group_vars` etc., and also did concern the different linux distributions. 
+2. In order to minimize the duplication inside role under the scalability concern, use template file to combine the settings for different production/staging settings (probably immature) 
+3. Use production/staging as key words to distinguish the production environment from dev/testing environment. 
+4. Inside nginx role, 
    - add `vars/production.yml` file to override the parameters settings for staging
    - nginx.conf.j2: use condiction clause to seperate the production/staging configuration
    - in tasks, use `production` key word to add specific operations for production environment
