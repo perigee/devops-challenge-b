@@ -36,6 +36,12 @@ A small coding challenge for our open devops position.  This is intended to be c
 2. Add service testng inside playbook (see inside playbook.yml)
 
 
+3. Add the uri test in `tests.yml`, for running test:
+
+   ```
+   $ ansible-playbook -i hosts tests.yml
+   ```
+
 ### Further test strategies (Not yet implemented)
 
 1. Run system testing on staging hosts
