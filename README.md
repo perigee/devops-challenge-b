@@ -68,14 +68,14 @@ In the `hosts` inventory file, put your production hosts under the `[production]
 To deploy a production machine, run:
 
 ```
-$ ansible-playbook --ask-become-pass -i hosts tmp.yml --extra-vars "stage=production"
+$ ansible-playbook --ask-become-pass -i hosts playbook.yml --extra-vars "stage=production"
 
 ```
 
 To deploy a staging (dev/test) machine, run:
 
 ```
-$ ansible-playbook --ask-become-pass -i hosts tmp.yml --extra-vars "stage=staging"
+$ ansible-playbook --ask-become-pass -i hosts playbook.yml --extra-vars "stage=staging"
 
 ```
 
