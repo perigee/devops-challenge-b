@@ -1,0 +1,4 @@
+---
+nginx_production: "production"
+nginx_reverse_proxy_path: "http://placekitten.com/"
+
