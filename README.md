@@ -33,10 +33,10 @@ A small coding challenge for our open devops position.  This is intended to be c
    $ ansible-playbook --syntax-check --list-tasks -i tests/ansible_hosts playbook.yml
    ```
 
-2. Add service testng inside playbook (see inside playbook.yml)
+2. Add service testing inside playbook (see inside playbook.yml)
 
 
-3. Add the uri test in `tests.yml`, for running test:
+3. Add the uri testing in `tests.yml`, for running test:
 
    ```
    $ ansible-playbook -i hosts tests.yml
