@@ -1,6 +1,23 @@
-- hosts: all
-  remote_user: '{{ user }}'
-  sudo: True
+---
 
-  tasks:
-    - include: tasks/nginx.yml
+- name: Setup Meow server 
+  hosts: "{{ stage }}"
+  remote_user: "{{ user }}"
+  sudo: True
+  roles: 
+  - nginx
+
+
+##===============================
+## Testing section
+##===============================
+
+- name: Testing... nginx service
+  hosts: all
+  tasks: 
+    - service: name=nginx state=running enabled=yes
+  
+
+- name: Testing... production setting
+  hosts: production
+  
