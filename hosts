@@ -1,3 +1,6 @@
+[local]
+127.0.0.1	ansible_connection=local
+
 [staging]
 104.167.117.203		ansible_connection=ssh		ansible_ssh_user=user
 
