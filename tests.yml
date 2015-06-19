@@ -1,0 +1,31 @@
+##===============================
+## Testing section
+##===============================
+
+- name: Test staging
+  hosts: local
+  vars: 
+    http_addr: "/meow"
+  tasks:
+    - uri: url=http://{{ item }}{{ http_addr }}
+      with_items: groups['staging']
+
+    - action: uri url=http://{{ item }}{{ http_addr }} return_content=yes
+      with_items: groups['staging']
+      register: staging_webpage
+      
+    - action: fail
+      when: "'Sorry' not in '{{ item.content }}'"
+      with_items: staging_webpage.results
+
+           
+    - action: uri url=http://{{ item }}{{ http_addr }} return_content=yes
+      with_items: groups['production']
+      register: production_webpage
+      
+    - action: fail
+      when: "'designs' not in '{{ item.content }}'"
+      with_items: production_webpage.results
+
+
+  
