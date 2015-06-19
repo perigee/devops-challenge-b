@@ -85,30 +85,11 @@ $ ansible-playbook --ask-become-pass -i hosts tmp.yml --extra-vars "stage=stagin
 3. Inside `roles/nginx/templates/nginx.conf.j2`, using `nginx_production` to distinguish the production settings from staging 
 
 
-
-
-To deploy to a machine, run:
-
-```
-$ ansible-playbook playbook.yml -i "HOST," --extra-vars="user=USER"
-
-```
-
-Replace HOST by the hostname or IP address, and USER by the username (must have
-sudo access).
-
-For example, for a machine with IP `52.0.228.95` and a username of `ubuntu`:
-
-```
-$ ansible-playbook playbook.yml -i "52.0.228.95," --extra-vars="user=ubuntu"
-```
-
 ## Resources:
 
 
 * [geerlingguy asible nginx role](https://github.com/geerlingguy/ansible-role-nginx/blob/master/templates/nginx.conf.j2)
 * [How to use Ansible for Vagrant and production](http://future500.nl/articles/2014/05/how-to-use-ansible-for-vagrant-and-production/)
-
 * [Ansible Documentation](http://docs.ansible.com/)
 * [nginx Documentation](http://nginx.org/en/docs/)
 * [Amazon Web Services Free Tier](http://aws.amazon.com/free/) - one way to
